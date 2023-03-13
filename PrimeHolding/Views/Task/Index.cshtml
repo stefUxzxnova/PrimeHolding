@@ -1,0 +1,34 @@
+﻿@using Task = PrimeHolding.Entities.Task;
+@model PrimeHolding.ViewModel.TaskVM.IndexVM
+@{
+	//използва css файла от папка shared
+	this.Layout = "/Views/Shared/SharedView.cshtml";
+	//title на html файла е home
+	ViewData["title"] = "HOME";
+}
+
+<!-- Това е допълението към html-a -->
+<p>
+	Task Controller
+</p>
+<a href="/Task/CREATE">NEW</a>
+<div class="grid">
+	@foreach (Task task in Model.Tasks)
+	{
+		<div class="row">
+			<div class="col-2">@task.Title</div>
+			<div class="col-2">@task.Description</div>
+			<div class="col-2">@task.DueDate</div>
+			<div class="col-2">@task.Assignee.FirstName</div>
+			<div class="col-2">@task.Assignee.LastName</div>
+			<div class="col-3">
+				<!--? => разделя url от списъка с get параметрите
+				бърка в Item и вади стойността на Id property-то;
+				това е id-to, което подаваме в action-a на delete -->
+				<a href="/Task/Edit?Id=@task.Id">edit</a>
+				<a href="/Task/Delete?Id=@task.Id">delete</a>
+
+			</div>
+		</div>
+	}
+</div>

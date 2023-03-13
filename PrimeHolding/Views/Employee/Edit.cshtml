@@ -1,0 +1,103 @@
+﻿<!--правим този файл силно типизиран, заради ViewData-та -->
+@model PrimeHolding.ViewModel.EmployeeVM.EditVM
+@{
+	//css файла -> wwwroot
+	//използва css файла от папка shared 
+	this.Layout = "/Views/Shared/SharedView.cshtml";
+	//title на html файла е home
+	ViewData["title"] = "EDIT EMPLOYEE";
+}
+
+<fieldset>
+	<legend>EDIT EMPLOYEE</legend>
+	<form action="/Employee/Edit" method="post">
+		@Html.HiddenFor(m => m.Id)
+		<div class="grid">
+			
+			<div class="row">
+				<div class="col-1">
+
+					@Html.LabelFor(m => m.FirstName)
+				</div>
+				<div class="col-2">
+
+					@Html.TextBoxFor(m => m.FirstName)
+				</div>
+				<div class="col-2">
+
+					@Html.ValidationMessageFor(m => m.FirstName)
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="col-1">
+					@Html.LabelFor(m => m.LastName)
+				</div>
+				<div class="col-2">
+					@Html.TextBoxFor(m => m.LastName)
+				</div>
+				<div class="col-2">
+					@Html.ValidationMessageFor(m => m.LastName)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-1">
+					@Html.LabelFor(m => m.Email)
+				</div>
+				<div class="col-2">
+					@Html.TextBoxFor(m => m.Email)
+				</div>
+				<div class="col-2">
+					@Html.ValidationMessageFor(m => m.Email)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-1">
+					@Html.LabelFor(m => m.PhoneNumber)
+				</div>
+				<div class="col-2">
+					@Html.TextBoxFor(m => m.PhoneNumber)
+				</div>
+				<div class="col-2">
+					@Html.ValidationMessageFor(m => m.PhoneNumber)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-1">
+					@Html.LabelFor(m => m.MonthlySalary)
+				</div>
+				<div class="col-2">
+					@Html.TextBoxFor(m => m.MonthlySalary)
+				</div>
+				<div class="col-2">
+					@Html.ValidationMessageFor(m => m.MonthlySalary)
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="col-1">
+					@Html.LabelFor(m => m.BirthDate)
+				</div>
+				<div class="col-2">
+					@Html.EditorFor(m => m.BirthDate, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+				</div>
+				<div class="col-2">
+					@Html.ValidationMessageFor(m => m.BirthDate)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-2">
+					<a class="right" href="/Employee/Index">Back</a> 
+					<input type="submit" class="right" value="Save"/>
+				</div>
+			</div>
+		</div>
+	</form>
+</fieldset>

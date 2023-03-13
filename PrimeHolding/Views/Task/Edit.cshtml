@@ -1,0 +1,85 @@
+﻿@using PrimeHolding.Entities;
+@model PrimeHolding.ViewModel.TaskVM.EditVM
+@{
+
+	this.Layout = "/Views/Shared/SharedView.cshtml";
+	//title на html файла е home
+	ViewData["title"] = "CREATE TASK";
+}
+
+<fieldset>
+	<legend>CREATE TASK</legend>
+	<form action="/Task/Edit" method="post">
+		@Html.HiddenFor(m => m.TaskId)
+		<div class="grid">
+			<div class="row">
+				<div class="col-1">
+					<!--Username:-->
+					@Html.LabelFor(m => m.AssigneeId)
+				</div>
+				<div class="col-2">
+					<select name="AssigneeId">
+						@foreach (Employee employee in Model.Employees)
+						{
+							<option value="@employee.Id">
+								@employee.FirstName @employee.LastName
+							</option>
+						}
+					</select>
+				</div>
+				<div class="col-2">
+
+					@Html.ValidationMessageFor(m => m.AssigneeId)
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-1">
+					<!--Username:-->
+					@Html.LabelFor(m => m.Title)
+				</div>
+				<div class="col-2">
+
+					@Html.TextBoxFor(m => m.Title)
+				</div>
+				<div class="col-2">
+
+					@Html.ValidationMessageFor(m => m.Title)
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-1">
+					@Html.LabelFor(m => m.Description)
+				</div>
+				<div class="col-2">
+
+					@Html.TextAreaFor(m => m.Description)
+				</div>
+				<div class="col-2">
+					@Html.ValidationMessageFor(m => m.Description)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-1">
+					@Html.LabelFor(m => m.DueDate)
+				</div>
+				<div class="col-2">
+					@Html.EditorFor(m => m.DueDate, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+				</div>
+				<div class="col-2">
+					@Html.ValidationMessageFor(m => m.DueDate)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-2">
+					<a class="right" href="/Task/Index">Back</a>
+					<input type="submit" class="right" value="Save" />
+				</div>
+			</div>
+		</div>
+	</form>
+</fieldset>
+
+

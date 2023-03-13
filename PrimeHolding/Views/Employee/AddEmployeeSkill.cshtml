@@ -1,0 +1,62 @@
+﻿@using PrimeHolding.Entities;
+@model PrimeHolding.ViewModel.EmployeeVM.AddEmployeeSkillVM
+@{
+
+	this.Layout = "/Views/Shared/SharedView.cshtml";
+
+	ViewData["title"] = "Add employee skill";
+}
+
+<fieldset>
+	<legend>ADD EMPLOYEE SKILL</legend>
+	<form action="/Employee/AddEmployeeSkill" method="post">
+
+		<div class="grid">
+			@Html.HiddenFor(m => m.EmployeeId)
+			<div class="row">
+				<div class="col-1">
+					<!--Username:-->
+					@Html.LabelFor(m => m.SkillId)
+				</div>
+				<div class="col-2">
+					<select name="SkillId">
+						@foreach (Skill skill in Model.Skills)
+						{
+							<option value="@skill.Id">
+								@skill.Title
+							</option>
+						}
+					</select>
+				</div>
+
+
+			
+			<div class="row">
+				<div class="col-1">	
+					@Html.LabelFor(m => m.LevelEmployee)
+				</div>
+					<div class="col-2">
+						@foreach (var option in Enum.GetValues(typeof(EmployeeToSkill.Level)))
+						{
+						<label>
+								@Html.RadioButtonFor(model => model.LevelEmployee, option)
+								@option
+						</label>
+						}
+					</div>
+				</div>
+			</div>
+			
+
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-2">
+					<a class="right" href="/Employee/Index">Back</a>
+					<input type="submit" class="right" value="Save" />
+				</div>
+			</div>
+		</div>
+	</form>
+</fieldset>
+
+

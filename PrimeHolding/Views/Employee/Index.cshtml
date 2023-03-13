@@ -1,0 +1,33 @@
+﻿@using PrimeHolding.Entities;
+@model PrimeHolding.ViewModel.EmployeeVM.IndexVM
+@{
+    //използва css файла от папка shared
+    this.Layout = "/Views/Shared/SharedView.cshtml";
+    //title на html файла е home
+    ViewData["title"] = "HOME";
+}
+
+<!-- Това е допълението към html-a -->
+<p>
+    Employee Controller
+</p>
+<a href="/Employee/CREATE">NEW</a>
+<div class="grid">
+	@foreach (Employee employee in Model.Employees)
+	{
+		<div class="row">
+			<div class="col-2">@employee.FirstName</div>
+			<div class="col-2">@employee.LastName</div>
+			<div class="col-3">
+				<!--? => разделя url от списъка с get параметрите
+				бърка в Item и вади стойността на Id property-то;
+				това е id-to, което подаваме в action-a на delete -->
+				<a href="/Employee/EmployeeSkills?Id=@employee.Id">Skills</a>
+				<a href="/Employee/Edit?Id=@employee.Id">edit</a>
+				<a href="/Employee/Delete?Id=@employee.Id">delete</a>
+				<a href="/Employee/AddEmployeeSkill?Id=@employee.Id">Add skill</a>
+
+			</div>
+		</div>
+	}
+</div>

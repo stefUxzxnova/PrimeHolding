@@ -1,0 +1,19 @@
+﻿@using PrimeHolding.Entities
+@model PrimeHolding.ViewModel.EmployeeVM.EmployeeTasksVM
+@{
+	this.Layout = "/Views/Shared/SharedView.cshtml";
+	ViewData["title"] = "EmployeeTasks";
+}
+
+
+<p>
+	Employee Tasks Controller
+</p>
+@foreach (EmployeeToSkill employeeToSkill in Model.EmployeeToSkill)
+{
+	<div class="row">
+		<div class="col-2">@employeeToSkill.EmployeeId</div>
+		<div class="col-2">@employeeToSkill.Skill.Title</div>
+		<div class="col-2">@employeeToSkill.EmployeeLevel</div>
+	</div>
+}

@@ -1,0 +1,97 @@
+﻿@model PrimeHolding.ViewModel.EmployeeVM.CreateVM
+@{
+	this.Layout = "/Views/Shared/SharedView.cshtml";
+	ViewData["title"] = "CREATE EMPLOYEE";
+}
+
+<fieldset>
+	<legend>CREATE Employee</legend>
+	<form action="/Employee/Create" method="post">
+		<div class="grid">
+			<div class="row">
+				<div class="col-1">
+					
+					@Html.LabelFor(m => m.FirstName)
+				</div>
+				<div class="col-2">
+				
+					@Html.TextBoxFor(m => m.FirstName)
+				</div>
+				<div class="col-2">
+					
+					@Html.ValidationMessageFor(m => m.FirstName)
+				</div>
+			</div>
+			
+			
+			<div class="row">
+				<div class="col-1">
+					@Html.LabelFor(m => m.LastName)
+				</div>
+				<div class="col-2">
+					@Html.TextBoxFor(m => m.LastName)
+				</div>
+				<div class="col-2">
+					@Html.ValidationMessageFor(m => m.LastName)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-1">
+					@Html.LabelFor(m => m.Email)
+				</div>
+				<div class="col-2">
+					@Html.TextBoxFor(m => m.Email)
+				</div>
+				<div class="col-2">
+					@Html.ValidationMessageFor(m => m.Email)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-1">
+					@Html.LabelFor(m => m.PhoneNumber)
+				</div>
+				<div class="col-2">
+					@Html.TextBoxFor(m => m.PhoneNumber)
+				</div>
+				<div class="col-2">
+					@Html.ValidationMessageFor(m => m.PhoneNumber)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-1">
+					@Html.LabelFor(m => m.MonthlySalary)
+				</div>
+				<div class="col-2">
+					@Html.TextBoxFor(m => m.MonthlySalary)
+				</div>
+				<div class="col-2">
+					@Html.ValidationMessageFor(m => m.MonthlySalary)
+				</div>
+			</div>
+
+			
+			<div class="row">
+				<div class="col-1">
+					@Html.LabelFor(m => m.BirthDate)
+				</div>
+			<div class="col-2">
+			@Html.EditorFor(m => m.BirthDate, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+				</div>
+				<div class="col-2">
+			@Html.ValidationMessageFor(m => m.BirthDate)
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-2">
+					<a class="right" href="/Employee/Index">Back</a>
+					<input type="submit" class="right" value="Save" />
+				</div>
+			</div>
+		</div>
+	</form>
+</fieldset>
